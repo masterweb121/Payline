@@ -4,7 +4,8 @@ include(dirname(__FILE__).'/../../config/config.inc.php');
 include(dirname(__FILE__).'/../../header.php');
 include_once(dirname(__FILE__).'/paylinepayment.php');
 
-if (!Context::getContext()->cart->id_customer)
+global $cart;
+if (!$cart->id_customer)
     Tools::redirect('authentication.php?back=order.php');
 	
 $paylinepayment= new paylinepayment();
