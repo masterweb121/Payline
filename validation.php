@@ -3,7 +3,6 @@
 include(dirname(__FILE__).'/../../config/config.inc.php');
 include(dirname(__FILE__).'/../../header.php');
 include_once(dirname(__FILE__).'/paylinepayment.php');
-
 	global $cart;
 	if (!$cart->id_customer)
 		Tools::redirect('authentication.php?back=order.php');
@@ -35,7 +34,7 @@ include_once(dirname(__FILE__).'/paylinepayment.php');
         setcookie("OrderId", "", -1);
         setcookie("PurchaseAmount","", -1);
 
-        if (!Context::getContext()->cart->id_guest)
+		if (!$customer->is_guest)
 			Tools::redirect('history.php');
 		echo $paylinepayment->l('Your Payment accepted. Order ID:').$paylinepayment->currentOrder;
 	} else {
